@@ -1,0 +1,43 @@
+
+#日杂系统安装
+sudo apt-get install -y rsyslog
+sudo service rsyslog start
+
+#cron 启动
+sudo cron -f &
+
+#cron 添加计划任务
+crontab -e
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+
+#例子
+每分钟创建一个文件
+*/1 * * * * touch /home/shiyanlou/$(date +\%Y\%m\%d\%H\%M\%S)
+
+#查看添加了哪些任务
+crontab -l 
+
+#cron 守护进程
+ps aux | grep cron
+or
+pgrep cron
+
+#通过日志查看任务是否执行
+sudo tail -f /var/log/syslog
+
+#删除任务
+crontab -r
+
+#系统任务
+/etc/cron.daily，目录下的脚本会每天执行一次，在每天的6点25分时运行；
+/etc/cron.hourly，目录下的脚本会每个小时执行一次，在每小时的17分钟时运行；
+/etc/cron.monthly，目录下的脚本会每月执行一次，在每月1号的6点52分时运行；
+/etc/cron.weekly，目录下的脚本会每周执行一次，在每周第七天的6点47分时运行;
