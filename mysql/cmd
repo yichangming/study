@@ -1,0 +1,40 @@
+
+
+
+# 打开 MySQL 服务
+sudo service mysql start        
+
+#使用 root 用户登录，密码为空
+mysql -u root
+
+#创建数据库
+CREATE DATABASE name;
+
+#显示数据库
+show databases;
+
+#连接数据库
+use name;
+
+#查看当前数据库中表
+show tables;
+
+#新建表
+CREATE TABLE name
+(
+列名a  数据类型（数据长度),
+列名b  数据类型（数据长度)
+);
+
+#插入表项
+INSERT INTO 表的名字(列名a,列名b,列名c) VALUES(值1,值2,值3);
+#例子
+INSERT INTO employee(id,name,phone) VALUES(01,'Tom',110110110);
+INSERT INTO employee VALUES(02,'Jack',119119119);
+INSERT INTO employee(id,name) VALUES(03,'Rose');
+
+#查看表内容
+SELECT * FROM tablename;
+
+
+
