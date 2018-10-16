@@ -1,6 +1,10 @@
 #pc creat ssh id
-ssh keygen
+ssh-keygen
 
 #copy id_rsa.public to github
 
-git clone git@github.com:yichangming/study.git 
+git clone git@github.com:yichangming/study.git
+git@github.com:yichangming/shiyanlou-project.git
+
+git config --global user.email "yichangming1984.com"
+git config --global user.name "yichangming"
